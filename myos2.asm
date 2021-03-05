@@ -36,7 +36,6 @@
 	UsrViaDDRA = UserVIA+ViaDDRA \\ 3 controls which bits are write (1) and read (0) in RegA
 	UsrViaIFR  = UserVIA+ViaIFR  \\ D Interrupt Flag    Register
 	UsrViaIER  = UserVIA+ViaIER  \\ E Interrupt Enable  Register
-	SerialULA    = &FE10 \\ baud tx:b0..b2 rx:b3..b5 b6 0:cassette/1:serial b7:motor relay and LED
 	
 	title_pos   = &7C28
 
@@ -52,7 +51,6 @@ ORG BEGIN
 	           sta UsrViaIER : sta UsrViaIFR \\ disable and clear all interrupts
 	lda #&FF : sta SysViaDDRA : sta SysViaDDRB
 	           sta UsrViaDDRA : sta UsrViaDDRB
-	           sta SerialULA  \\ cassette LED/motor ON
 	lda #4   : sta SysViaPCR  \\ vsync \\ CA1 negative-active-edge CA2 input-positive-active-edge CB1 negative-active-edge CB2 input-nagative-active-edge
 	lda #0   : sta SysViaACR  \\ none  \\ PA latch-disable PB latch-disable SRC disabled T2 timed-interrupt T1 interrupt-t1-loaded PB7 disabled
 
